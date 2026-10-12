@@ -44,3 +44,4 @@ ipcMain.handle('launch', async (e, o) => {
   } catch (err) { return { ok: false, error: String(err.message || err) }; }
 });
 ipcMain.on('mods', () => { const d = path.join(root, 'mods'); fs.mkdirSync(d, { recursive: true }); shell.openPath(d); });
+ipcMain.handle('mods:list', () => { try { const d = path.join(root, 'mods'); return fs.readdirSync(d).filter(f => f.endsWith('.jar')).map(f => ({ name: f.replace(/\.jar$/, ''), size: (fs.statSync(path.join(d, f)).size / 1048576).toFixed(1) })); } catch { return []; } });

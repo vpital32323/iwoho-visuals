@@ -12,22 +12,30 @@ body{height:100vh;background:var(--bg);color:#fff;overflow:hidden;user-select:no
 .wc{display:flex;gap:8px;-webkit-app-region:no-drag}.wc button{width:30px;height:26px;border:0;border-radius:8px;background:var(--glass);color:#fff;cursor:pointer;transition:.2s}.wc button:hover{background:var(--c1)}
 .app{position:fixed;inset:54px 14px 14px;display:flex;gap:14px;animation:rise .8s cubic-bezier(.2,.9,.3,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(24px) scale(.98)}}
-.side{width:210px;border-radius:26px;padding:12px;background:linear-gradient(180deg,color-mix(in srgb,var(--c1) 55%,transparent),color-mix(in srgb,var(--bg) 70%,transparent));border:1px solid var(--line);backdrop-filter:blur(20px);display:flex;flex-direction:column;gap:8px}
-.nav{padding:13px 16px;border-radius:16px;cursor:pointer;font-weight:600;color:#ffffffb0;transition:.25s;display:flex;gap:12px}
-.nav:hover{background:var(--glass);transform:translateX(4px)}.nav.on{color:#fff;background:linear-gradient(90deg,var(--c1),var(--c2));box-shadow:0 8px 30px -8px var(--c1)}
-.main{flex:1;border-radius:26px;position:relative;overflow:hidden;background:linear-gradient(135deg,#0008,#0003);border:1px solid var(--line);backdrop-filter:blur(8px)}
-.page{position:absolute;inset:0;padding:34px;opacity:0;pointer-events:none;transform:translateY(14px);transition:.45s}.page.on{opacity:1;pointer-events:auto;transform:none}
-.hero h1{font-size:76px;font-weight:900;letter-spacing:-1px;margin-top:130px;background:linear-gradient(90deg,#fff,color-mix(in srgb,var(--c2) 50%,#fff));-webkit-background-clip:text;color:transparent}
-.hero p{font-size:19px;opacity:.8;margin-top:6px}.hero small{display:block;margin-top:14px;opacity:.5}
-.dock{position:absolute;left:24px;right:24px;bottom:24px;display:flex;gap:14px;padding:16px;border-radius:24px;background:#0007;border:1px solid var(--line);backdrop-filter:blur(18px)}
-.f{display:flex;flex-direction:column;gap:6px;flex:1;font-size:11px;letter-spacing:1.5px;opacity:.9}.f span{opacity:.6;font-weight:700}
-input,select{height:46px;border-radius:14px;border:1px solid var(--line);background:#000a;color:#fff;padding:0 14px;font-size:15px;font-weight:600;outline:none;transition:.2s}input:focus,select:focus{border-color:var(--c1);box-shadow:0 0 0 3px color-mix(in srgb,var(--c1) 35%,transparent)}
-.play{flex:1.1;border:0;border-radius:16px;font-size:18px;font-weight:900;letter-spacing:2px;color:#fff;cursor:pointer;align-self:flex-end;height:46px;background:linear-gradient(90deg,var(--c2),var(--c1),var(--c2));background-size:200%;animation:flow 4s linear infinite;transition:.2s}
-.play:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 10px 36px -6px var(--c1)}@keyframes flow{to{background-position:200%}}
-h2{font-size:26px;margin-bottom:20px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
-.card{height:96px;border-radius:20px;cursor:pointer;border:2px solid transparent;display:flex;align-items:flex-end;padding:12px;font-weight:700;transition:.25s}.card:hover{transform:translateY(-4px) scale(1.03)}.card.on{border-color:#fff;box-shadow:0 0 28px -4px var(--c1)}
-.row{display:flex;gap:14px;align-items:center;margin:18px 0}.row label{opacity:.7;width:150px}input[type=color]{width:60px;padding:3px}
+.side{width:230px;border-radius:26px;padding:14px;background:#0a0714cc;border:1px solid var(--line);backdrop-filter:blur(22px);display:flex;flex-direction:column;gap:6px}
+.nav{padding:12px 14px;border-radius:14px;cursor:pointer;font-weight:600;font-size:14px;color:#ffffffa8;transition:.25s;display:flex;gap:12px;align-items:center}
+.nav:hover{background:var(--glass);transform:translateX(4px);color:#fff}.nav.on{color:#fff;background:linear-gradient(90deg,var(--c1),color-mix(in srgb,var(--c1) 60%,#000));box-shadow:0 8px 26px -8px var(--c1)}
+.hr{height:1px;background:var(--line);margin:8px 6px}.me{display:flex;gap:10px;align-items:center;padding:10px;border-radius:16px;background:var(--glass);font-size:13px}.me img{width:34px;border-radius:10px}.me small{display:block;opacity:.5;font-size:11px}
+.main{flex:1;border-radius:26px;position:relative;overflow:hidden;background:#0a0714aa;border:1px solid var(--line);backdrop-filter:blur(10px)}
+.page{position:absolute;inset:0;padding:26px 30px;overflow:auto;opacity:0;pointer-events:none;transform:translateY(14px);transition:.45s}.page.on{opacity:1;pointer-events:auto;transform:none}
+.page::-webkit-scrollbar{width:0}.hello{font-size:13px;opacity:.65;margin-bottom:14px}.hello b{color:#fff}
+.hero{position:relative;height:250px;border-radius:26px;overflow:hidden;padding:30px;border:1px solid var(--line);background:linear-gradient(120deg,color-mix(in srgb,var(--c1) 45%,#000),color-mix(in srgb,var(--c2) 35%,#000))}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#ffffff1c 50%,transparent 70%);background-size:250%;animation:shine 6s linear infinite}@keyframes shine{from{background-position:150%}to{background-position:-100%}}
+.hero img.big{position:absolute;right:-30px;top:-20px;width:300px;opacity:.28;filter:blur(1px);animation:float 6s ease-in-out infinite}@keyframes float{50%{transform:translateY(12px) rotate(4deg)}}
+.hero h1{position:relative;font-size:48px;font-weight:900;letter-spacing:-.5px}.hero p{position:relative;opacity:.8;margin-top:4px}
+.pl{position:absolute;left:30px;bottom:26px;display:flex;gap:10px;align-items:center}
+.play{height:54px;padding:0 30px;border:0;border-radius:16px;color:#fff;cursor:pointer;text-align:left;font-weight:800;font-size:16px;background:#ffffff2e;backdrop-filter:blur(14px);border:1px solid #ffffff40;transition:.25s}.play small{display:block;font-size:11px;opacity:.7;font-weight:600}
+.play:hover{transform:translateY(-3px);background:linear-gradient(90deg,var(--c1),var(--c2));box-shadow:0 12px 34px -8px var(--c1)}
+.mini{height:54px;border-radius:16px}.pl select{height:54px;width:110px}
+.status{margin:14px 0 6px;font-size:13px;opacity:.85}.pb{height:5px;border-radius:9px;background:#fff2;overflow:hidden}.pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c1),var(--c2));transition:width .3s}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}.st{padding:14px 16px;border-radius:18px;background:var(--glass);border:1px solid var(--line)}.st span{font-size:11px;opacity:.55;display:block;margin-bottom:6px}.st b{font-size:17px}.st input,.st select{height:34px;width:100%;font-size:14px;border-radius:10px}
+.box{padding:16px 18px;border-radius:20px;background:var(--glass);border:1px solid var(--line)}.box h3{font-size:14px;margin-bottom:10px}
+.mod{display:flex;gap:10px;align-items:center;padding:9px 4px;font-size:14px;border-top:1px solid #ffffff0d}.mod i{width:8px;height:8px;border-radius:50%;background:#4cff7a;box-shadow:0 0 8px #4cff7a}.mod em{margin-left:auto;opacity:.45;font-style:normal;font-size:12px}
+h2{font-size:26px;margin-bottom:18px}h4{opacity:.7;margin:18px 0 12px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.card{height:90px;border-radius:18px;cursor:pointer;border:2px solid transparent;display:flex;align-items:flex-end;padding:12px;font-weight:700;transition:.25s}.card:hover{transform:translateY(-4px) scale(1.03)}.card.on{border-color:#fff}
+.row{display:flex;gap:14px;align-items:center;margin:14px 0}.row label{opacity:.7;width:150px}input[type=color]{width:60px;padding:3px}
 .btn{height:44px;padding:0 20px;border-radius:14px;border:1px solid var(--line);background:var(--glass);color:#fff;font-weight:600;cursor:pointer;transition:.2s}.btn:hover{background:var(--c1)}
+.soon{opacity:.6;padding:30px;text-align:center;border:1px dashed var(--line);border-radius:20px}
 /* fullscreen play screen */
 #fs{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.6s;background:#000}
 #fs.on{opacity:1;pointer-events:auto}#fsBg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75}
@@ -36,7 +44,7 @@ h2{font-size:26px;margin-bottom:20px}.grid{display:grid;grid-template-columns:re
 .menu header{display:flex;gap:12px;align-items:center;margin-bottom:18px}.menu header img{width:44px;border-radius:12px}.menu header b{display:block}.menu header small{opacity:.5}
 .mb{width:100%;height:50px;margin-bottom:10px;border-radius:15px;border:1px solid var(--line);background:var(--glass);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:.25s;text-align:left;padding:0 18px}.mb:hover{background:linear-gradient(90deg,var(--c1),var(--c2));transform:translateX(5px)}
 .sv{display:none;gap:8px;margin-bottom:10px}.sv.on{display:flex}.sv input{flex:1}
-.status{margin-top:8px;font-size:12px;opacity:.8;min-height:34px}.pb{height:5px;border-radius:9px;background:#fff2;margin-top:6px;overflow:hidden}.pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c1),var(--c2));transition:width .3s}
+.fst{margin-top:8px;font-size:12px;opacity:.8;min-height:34px}
 .ver{position:absolute;left:14px;bottom:10px;font-size:12px;opacity:.5}.ver.r{left:auto;right:14px}
 </style></head><body>
 <div id="bgGrad"></div><video id="bgMedia" autoplay loop muted playsinline></video><div id="shade"></div>
@@ -44,34 +52,36 @@ h2{font-size:26px;margin-bottom:20px}.grid{display:grid;grid-template-columns:re
 
 <div class="app">
  <div class="side">
-  <div class="nav on" data-p="play">▶ Играть</div><div class="nav" data-p="mods">☰ Моды</div><div class="nav" data-p="set">⚙ Настройки</div>
-  <div style="flex:1"></div><div style="padding:10px;font-size:12px;opacity:.5">Iwoho Visuals<br>v1.0.0</div>
+  <div class="nav on" data-p="home">🏠 Главная</div><div class="nav" data-p="cos">✨ Косметика</div><div class="nav" data-p="skins">👤 Скины</div><div class="nav" data-p="mods">🧩 Моды</div><div class="nav" data-p="packs">📦 Паки</div><div class="nav" data-p="set">⚙ Настройки</div>
+  <div class="hr"></div><div class="nav" id="quick">▶ Играть сразу</div><div class="nav" id="folder">📁 Папка модов</div>
+  <div style="flex:1"></div><div class="me"><img src="./logo.svg"><div><b id="meNick">Player</b><small>Iwoho Visuals</small></div></div>
  </div>
  <div class="main">
-  <div class="page on" id="play"><div class="hero"><h1>IWOHO CLIENT</h1><p>Играй плавно. Играй красиво.</p><small>Iwoho Visuals</small></div>
-   <div class="dock">
-    <div class="f"><span>НИК</span><input id="nick" value="Player" maxlength="16"></div>
-    <div class="f"><span>ВЕРСИЯ</span><select id="ver"><option>1.20.1</option><option>1.20.4</option><option>1.21.1</option><option>1.19.4</option><option>1.16.5</option><option>1.12.2</option><option>1.8.9</option></select></div>
-    <div class="f"><span>ЗАГРУЗЧИК</span><select id="loader"><option>Fabric</option><option>Vanilla</option></select></div>
-    <button class="play" id="playBtn">ИГРАТЬ</button>
-   </div></div>
-  <div class="page" id="mods"><h2>Моды</h2><p style="opacity:.6">Положи .jar в папку модов (%appdata%\.iwoho\mods).</p><div class="row"><button class="btn" id="openMods">Открыть папку</button></div></div>
+  <div class="page on" id="home"><div class="hello">С возвращением, <b id="hi">Player</b>!</div>
+   <div class="hero"><img class="big" src="./logo.svg"><h1>Iwoho Visuals</h1><p>Играй плавно. Играй красиво.</p>
+    <div class="pl"><button class="play" id="playBtn">▶ Играть<small id="pSub"></small></button>
+     <select id="ver"><option>1.20.1</option><option>1.20.4</option><option>1.21.1</option><option>1.19.4</option><option>1.16.5</option><option>1.12.2</option><option>1.8.9</option></select>
+     <select id="loader"><option>Fabric</option><option>Vanilla</option></select></div></div>
+   <div class="status" id="st">Готов к запуску</div><div class="pb"><i id="pbH"></i></div>
+   <div class="stats"><div class="st"><span>Игрок</span><input id="nick" value="Player" maxlength="16"></div><div class="st"><span>Активный пак</span><b>Default</b></div><div class="st"><span>Модов установлено</span><b id="modCount">0</b></div><div class="st"><span>Память</span><select id="ram"><option>2G</option><option selected>4G</option><option>6G</option><option>8G</option></select></div></div>
+   <div class="box"><h3>Моды сборки</h3><div id="modList"></div></div></div>
+  <div class="page" id="cos"><h2>Косметика</h2><div class="soon">Плащи, крылья и эффекты — скоро</div></div>
+  <div class="page" id="skins"><h2>Скины</h2><div class="soon">Выбор скина — скоро</div></div>
+  <div class="page" id="mods"><h2>Моды</h2><p style="opacity:.6">Положи .jar в папку модов, она откроется кнопкой ниже.</p><div class="row"><button class="btn" id="openMods">Открыть папку</button></div></div>
+  <div class="page" id="packs"><h2>Паки</h2><div class="soon">Ресурспаки и шейдеры — скоро</div></div>
   <div class="page" id="set"><h2>Настройки</h2>
-   <h3 style="opacity:.7;margin-bottom:12px">Темы</h3><div class="grid" id="themes"></div>
+   <h4>Темы</h4><div class="grid" id="themes"></div>
    <div class="row"><label>Свой градиент</label><input type="color" id="c1"><input type="color" id="c2"><button class="btn" id="rand">🎲 Случайный</button></div>
-   <h3 style="opacity:.7;margin:20px 0 12px">Фон</h3><div class="grid" id="bgs"></div>
-   <div class="row"><label>Оперативная память</label><select id="ram"><option>2G</option><option selected>4G</option><option>6G</option><option>8G</option></select></div>
-  </div>
+   <h4>Фон</h4><div class="grid" id="bgs"></div></div>
  </div>
 </div>
-
 <div id="fs"><div id="fsGrad"></div><video id="fsBg" autoplay loop muted playsinline></video>
  <div class="menu"><header><img src="./logo.svg"><div><b>Iwoho Visuals</b><small id="fsVer"></small></div></header>
   <button class="mb" id="single">🎮 Одиночная игра</button>
   <button class="mb" id="multi">🌐 Сетевая игра</button>
   <div class="sv" id="sv"><input id="srv" placeholder="адрес сервера, напр. funtime.su"><button class="btn" id="go">▶</button></div>
   <button class="mb" id="back">← Назад</button>
-  <div class="status" id="st"></div><div class="pb"><i id="pb"></i></div>
+  <div id="fst" class="fst"></div><div class="pb"><i id="pb"></i></div>
  </div>
  <div class="ver">Iwoho Visuals 1.0</div><div class="ver r">Minecraft Java Edition</div>
 </div>
@@ -90,21 +100,26 @@ $('#themes').onclick=e=>{const c=e.target.closest('.card');if(!c)return;const t=
 $('#bgs').onclick=async e=>{const c=e.target.closest('.card');if(!c)return;let p=BGS[c.dataset.b][1];if(p==='pick'){const f=await api.pickFile();if(!f)return;p='file:///'+f.replace(/\\/g,'/')}S.bg=p;media();save()};
 $('#c1').oninput=e=>{S.c1=e.target.value;paint();save()};$('#c2').oninput=e=>{S.c2=e.target.value;paint();save()};
 $('#rand').onclick=()=>{const r=()=>'#'+Math.floor(Math.random()*0xffffff).toString(16).padStart(6,'0');S.c1=r();S.c2=r();paint();save()};
-document.querySelectorAll('.nav').forEach(n=>n.onclick=()=>{document.querySelectorAll('.nav,.page').forEach(x=>x.classList.remove('on'));n.classList.add('on');$('#'+n.dataset.p).classList.add('on')});
+document.querySelectorAll('.nav[data-p]').forEach(n=>n.onclick=()=>{document.querySelectorAll('.nav[data-p],.page').forEach(x=>x.classList.remove('on'));n.classList.add('on');$('#'+n.dataset.p).classList.add('on')});
 // play flow
 $('#openMods').onclick=()=>api.openMods();
-$('#playBtn').onclick=()=>{$('#fsVer').textContent=`${$('#ver').value} · ${$('#loader').value}`;api.fullscreen(true);$('#fs').classList.add('on')};
+const sub=()=>{$('#pSub').textContent=`${$('#loader').value} ${$('#ver').value}`;$('#fsVer').textContent=`${$('#ver').value} · ${$('#loader').value}`};$('#ver').onchange=$('#loader').onchange=sub;sub();
+const openFs=()=>{sub();api.fullscreen(true);$('#fs').classList.add('on')};$('#playBtn').onclick=openFs;$('#quick').onclick=openFs;$('#folder').onclick=()=>api.openMods();
 $('#back').onclick=()=>{$('#fs').classList.remove('on');api.fullscreen(false)};
 $('#multi').onclick=()=>$('#sv').classList.toggle('on');
 async function run(server){
-  $('#st').textContent='Подготовка…';$('#pb').style.width='0';
+  setSt('Подготовка…',0);
   const r=await api.launch({nick:$('#nick').value,version:$('#ver').value,loader:$('#loader').value,ram:$('#ram').value,server});
-  if(!r.ok)$('#st').textContent='Ошибка: '+r.error;
+  if(!r.ok)setSt('Ошибка: '+r.error,0);
 }
 $('#single').onclick=()=>run();$('#go').onclick=()=>run($('#srv').value.trim());
-api.on('progress',d=>{$('#st').textContent=d.text;$('#pb').style.width=d.pct+'%'});
-api.on('started',()=>{$('#st').textContent='Игра запущена ✔';$('#pb').style.width='100%'});
-api.on('closed',()=>{$('#st').textContent='Игра закрыта'});
+api.on('progress',d=>setSt(d.text,d.pct));
+api.on('started',()=>setSt('Игра запущена ✔',100));
+api.on('closed',()=>setSt('Игра закрыта',0));
 const sv=localStorage.getItem('iwohoNick');if(sv)$('#nick').value=sv;$('#nick').onchange=e=>localStorage.setItem('iwohoNick',e.target.value);
+function setSt(t,p){$('#st').textContent=t;$('#fst').textContent=t;$('#pbH').style.width=p+'%';$('#pb').style.width=p+'%'}
+function hi(){$('#hi').textContent=$('#meNick').textContent=$('#nick').value||'Player'}$('#nick').addEventListener('input',hi);hi();
+async function mods(){const l=await api.listMods();$('#modCount').textContent=l.length;$('#modList').innerHTML=l.length?l.map(m=>`<div class="mod"><i></i>${m.name}<em>${m.size} МБ</em></div>`).join(''):'<div style="opacity:.5;font-size:13px">Модов пока нет — добавь .jar через «Папка модов»</div>'}
+mods();document.querySelectorAll('.nav').forEach(n=>n.addEventListener('click',()=>{if(n.dataset.p==='home')mods()}));
 paint();media();
 </script></body></html>
