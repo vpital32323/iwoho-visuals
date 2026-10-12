@@ -40,7 +40,7 @@ h2{font-size:26px;margin-bottom:20px}.grid{display:grid;grid-template-columns:re
 .ver{position:absolute;left:14px;bottom:10px;font-size:12px;opacity:.5}.ver.r{left:auto;right:14px}
 </style></head><body>
 <div id="bgGrad"></div><video id="bgMedia" autoplay loop muted playsinline></video><div id="shade"></div>
-<div class="top"><div class="brand"><img src="../assets/logo.svg">IWOHO LAUNCHER</div><div class="wc"><button onclick="api.win('min')">—</button><button onclick="api.win('max')">▢</button><button onclick="api.win('close')">✕</button></div></div>
+<div class="top"><div class="brand"><img src="./logo.svg">IWOHO LAUNCHER</div><div class="wc"><button onclick="api.win('min')">—</button><button onclick="api.win('max')">▢</button><button onclick="api.win('close')">✕</button></div></div>
 
 <div class="app">
  <div class="side">
@@ -66,7 +66,7 @@ h2{font-size:26px;margin-bottom:20px}.grid{display:grid;grid-template-columns:re
 </div>
 
 <div id="fs"><div id="fsGrad"></div><video id="fsBg" autoplay loop muted playsinline></video>
- <div class="menu"><header><img src="../assets/logo.svg"><div><b>Iwoho Visuals</b><small id="fsVer"></small></div></header>
+ <div class="menu"><header><img src="./logo.svg"><div><b>Iwoho Visuals</b><small id="fsVer"></small></div></header>
   <button class="mb" id="single">🎮 Одиночная игра</button>
   <button class="mb" id="multi">🌐 Сетевая игра</button>
   <div class="sv" id="sv"><input id="srv" placeholder="адрес сервера, напр. funtime.su"><button class="btn" id="go">▶</button></div>
@@ -79,7 +79,7 @@ h2{font-size:26px;margin-bottom:20px}.grid{display:grid;grid-template-columns:re
 <script>
 const $=s=>document.querySelector(s),root=document.documentElement;
 const THEMES=[['Фиолет','#8a63ff','#4fd8e8'],['Красный','#ff2d3d','#ff9a3d'],['Закат','#ff7b3d','#ffd24f'],['Океан','#2d7bff','#2dffd0'],['Сакура','#ff5fa8','#c46bff'],['Токсик','#6bff3d','#2dd4ff']];
-const BGS=[['Градиент',''],['Видео 1','../assets/bg/video1.mp4'],['Видео 2','../assets/bg/video2.mp4'],['Свой файл…','pick']];
+const BGS=[['Градиент',''],['Видео 1','./video1.mp4'],['Видео 2','./video2.mp4'],['Свой файл…','pick']];
 let S=JSON.parse(localStorage.getItem('iwoho')||'{}');S={c1:'#8a63ff',c2:'#4fd8e8',bg:'',...S};
 const save=()=>localStorage.setItem('iwoho',JSON.stringify(S));
 function paint(){root.style.setProperty('--c1',S.c1);root.style.setProperty('--c2',S.c2);$('#c1').value=S.c1;$('#c2').value=S.c2;}
