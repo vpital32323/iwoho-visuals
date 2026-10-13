@@ -3,6 +3,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: windows-latest
@@ -17,3 +19,9 @@ jobs:
         with:
           name: Iwoho-Launcher-Setup
           path: dist/*.exe
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Iwoho Launcher (последняя версия)
+          files: dist/*.exe
+          make_latest: true
