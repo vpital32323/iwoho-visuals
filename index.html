@@ -1,125 +1,155 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Iwoho Launcher</title><style>
-:root{--c1:#8a63ff;--c2:#4fd8e8;--bg:#0a0714;--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.12)}
+:root{--c1:#8a63ff;--c2:#4fd8e8;--bg:#0a0714;--glass:rgba(255,255,255,.07);--line:rgba(255,255,255,.14);color-scheme:dark}
 *{margin:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
 body{height:100vh;background:var(--bg);color:#fff;overflow:hidden;user-select:none}
 #bgGrad{position:fixed;inset:-30%;background:conic-gradient(from 0deg,var(--c1),var(--bg),var(--c2),var(--bg),var(--c1));filter:blur(90px);opacity:.55;animation:spin 28s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-#bgMedia{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s}
-#bgMedia.on{opacity:.55}
-#shade{position:fixed;inset:0;background:radial-gradient(circle at 50% 40%,transparent,#000a 90%)}
+#bgMedia,#bgImg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;background-size:cover;background-position:center;opacity:0;transition:opacity .8s}
+#bgMedia.on,#bgImg.on{opacity:.6}#shade{position:fixed;inset:0;background:radial-gradient(circle at 50% 40%,transparent,#000a 90%)}
 .top{position:fixed;top:0;left:0;right:0;height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;-webkit-app-region:drag;z-index:20}
 .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:2px;font-size:13px}.brand img{width:22px;border-radius:6px}
 .wc{display:flex;gap:8px;-webkit-app-region:no-drag}.wc button{width:30px;height:26px;border:0;border-radius:8px;background:var(--glass);color:#fff;cursor:pointer;transition:.2s}.wc button:hover{background:var(--c1)}
-.app{position:fixed;inset:54px 14px 14px;display:flex;gap:14px;animation:rise .8s cubic-bezier(.2,.9,.3,1) both}
-@keyframes rise{from{opacity:0;transform:translateY(24px) scale(.98)}}
-.side{width:230px;border-radius:26px;padding:14px;background:#0a0714cc;border:1px solid var(--line);backdrop-filter:blur(22px);display:flex;flex-direction:column;gap:6px}
-.nav{padding:12px 14px;border-radius:14px;cursor:pointer;font-weight:600;font-size:14px;color:#ffffffa8;transition:.25s;display:flex;gap:12px;align-items:center}
+svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.app{position:fixed;inset:54px 14px 14px;display:flex;gap:14px;animation:rise .9s cubic-bezier(.2,.9,.3,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(26px) scale(.98)}}
+.side{width:230px;border-radius:26px;padding:14px;background:#0a0714cc;border:1px solid var(--line);backdrop-filter:blur(22px);display:flex;flex-direction:column;gap:5px}
+.nav{padding:12px 14px;border-radius:14px;cursor:pointer;font-weight:600;font-size:14px;color:#ffffffb8;transition:.25s;display:flex;gap:13px;align-items:center}.nav svg{stroke:#fff}
 .nav:hover{background:var(--glass);transform:translateX(4px);color:#fff}.nav.on{color:#fff;background:linear-gradient(90deg,var(--c1),color-mix(in srgb,var(--c1) 60%,#000));box-shadow:0 8px 26px -8px var(--c1)}
+.side .nav{animation:up .6s both}.side .nav:nth-child(2){animation-delay:.08s}.side .nav:nth-child(3){animation-delay:.16s}.side .nav:nth-child(4){animation-delay:.24s}.side .nav:nth-child(5){animation-delay:.32s}.side .nav:nth-child(6){animation-delay:.4s}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
 .hr{height:1px;background:var(--line);margin:8px 6px}.me{display:flex;gap:10px;align-items:center;padding:10px;border-radius:16px;background:var(--glass);font-size:13px}.me img{width:34px;border-radius:10px}.me small{display:block;opacity:.5;font-size:11px}
 .main{flex:1;border-radius:26px;position:relative;overflow:hidden;background:#0a0714aa;border:1px solid var(--line);backdrop-filter:blur(10px)}
-.page{position:absolute;inset:0;padding:26px 30px;overflow:auto;opacity:0;pointer-events:none;transform:translateY(14px);transition:.45s}.page.on{opacity:1;pointer-events:auto;transform:none}
-.page::-webkit-scrollbar{width:0}.hello{font-size:13px;opacity:.65;margin-bottom:14px}.hello b{color:#fff}
-.hero{position:relative;height:250px;border-radius:26px;overflow:hidden;padding:30px;border:1px solid var(--line);background:linear-gradient(120deg,color-mix(in srgb,var(--c1) 45%,#000),color-mix(in srgb,var(--c2) 35%,#000))}
-.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#ffffff1c 50%,transparent 70%);background-size:250%;animation:shine 6s linear infinite}@keyframes shine{from{background-position:150%}to{background-position:-100%}}
-.hero img.big{position:absolute;right:-30px;top:-20px;width:300px;opacity:.28;filter:blur(1px);animation:float 6s ease-in-out infinite}@keyframes float{50%{transform:translateY(12px) rotate(4deg)}}
-.hero h1{position:relative;font-size:48px;font-weight:900;letter-spacing:-.5px}.hero p{position:relative;opacity:.8;margin-top:4px}
+.page{position:absolute;inset:0;padding:26px 30px;overflow:auto;opacity:0;pointer-events:none;transform:translateY(14px);transition:.45s}.page.on{opacity:1;pointer-events:auto;transform:none}.page::-webkit-scrollbar{width:0}
+.hello{font-size:13px;opacity:.65;margin-bottom:14px}.hello b{color:#fff}
+.hero{position:relative;height:260px;border-radius:26px;overflow:hidden;padding:30px;border:1px solid var(--line);background:linear-gradient(180deg,#0000 40%,#000a),url(./hero.svg) center/cover}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#ffffff22 50%,transparent 70%);background-size:250%;animation:shine 7s linear infinite}@keyframes shine{from{background-position:150%}to{background-position:-100%}}
+.hero h1{position:relative;font-size:50px;font-weight:900;letter-spacing:-.5px;text-shadow:0 4px 30px #0008}.hero p{position:relative;opacity:.9;margin-top:4px}
 .pl{position:absolute;left:30px;bottom:26px;display:flex;gap:10px;align-items:center}
-.play{height:54px;padding:0 30px;border:0;border-radius:16px;color:#fff;cursor:pointer;text-align:left;font-weight:800;font-size:16px;background:#ffffff2e;backdrop-filter:blur(14px);border:1px solid #ffffff40;transition:.25s}.play small{display:block;font-size:11px;opacity:.7;font-weight:600}
+.glass,select,input.g{background:#ffffff26;backdrop-filter:blur(14px) saturate(1.4);border:1px solid #ffffff45;box-shadow:inset 0 1px 0 #ffffff40;color:#fff;border-radius:16px;height:54px;padding:0 18px;font-weight:700;font-size:15px;outline:none;transition:.25s}
+select{appearance:none;padding-right:40px;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='white' stroke-width='2'><path d='M1 1l5 5 5-5'/></svg>");background-repeat:no-repeat;background-position:right 16px center}
+option{background:#16102c;color:#fff}select:hover,input.g:focus{border-color:var(--c1);box-shadow:0 0 0 3px color-mix(in srgb,var(--c1) 30%,transparent),inset 0 1px 0 #ffffff40}
+.play{cursor:pointer;text-align:left;font-size:16px;font-weight:800}.play small{display:block;font-size:11px;opacity:.75;font-weight:600}
 .play:hover{transform:translateY(-3px);background:linear-gradient(90deg,var(--c1),var(--c2));box-shadow:0 12px 34px -8px var(--c1)}
-.mini{height:54px;border-radius:16px}.pl select{height:54px;width:110px}
-.status{margin:14px 0 6px;font-size:13px;opacity:.85}.pb{height:5px;border-radius:9px;background:#fff2;overflow:hidden}.pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c1),var(--c2));transition:width .3s}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}.st{padding:14px 16px;border-radius:18px;background:var(--glass);border:1px solid var(--line)}.st span{font-size:11px;opacity:.55;display:block;margin-bottom:6px}.st b{font-size:17px}.st input,.st select{height:34px;width:100%;font-size:14px;border-radius:10px}
-.box{padding:16px 18px;border-radius:20px;background:var(--glass);border:1px solid var(--line)}.box h3{font-size:14px;margin-bottom:10px}
+.status{margin:14px 0 8px;font-size:13px;opacity:.85}
+.pb{height:8px;border-radius:9px;background:#ffffff14;border:1px solid #ffffff1f;overflow:hidden}.pb i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--c1),color-mix(in srgb,var(--c1) 50%,#fff));box-shadow:0 0 16px var(--c1);transition:width .4s}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}.st{padding:14px 16px;border-radius:18px;background:var(--glass);border:1px solid var(--line);transition:.25s}.st:hover{transform:translateY(-3px)}.st span{font-size:11px;opacity:.55;display:block;margin-bottom:6px}.st b{font-size:17px}.st select{height:36px;width:100%;font-size:14px;border-radius:11px;padding:0 30px 0 12px}
+.box{padding:16px 18px;border-radius:20px;background:var(--glass);border:1px solid var(--line)}.box h3{font-size:14px;margin-bottom:8px}
 .mod{display:flex;gap:10px;align-items:center;padding:9px 4px;font-size:14px;border-top:1px solid #ffffff0d}.mod i{width:8px;height:8px;border-radius:50%;background:#4cff7a;box-shadow:0 0 8px #4cff7a}.mod em{margin-left:auto;opacity:.45;font-style:normal;font-size:12px}
 h2{font-size:26px;margin-bottom:18px}h4{opacity:.7;margin:18px 0 12px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
-.card{height:90px;border-radius:18px;cursor:pointer;border:2px solid transparent;display:flex;align-items:flex-end;padding:12px;font-weight:700;transition:.25s}.card:hover{transform:translateY(-4px) scale(1.03)}.card.on{border-color:#fff}
-.row{display:flex;gap:14px;align-items:center;margin:14px 0}.row label{opacity:.7;width:150px}input[type=color]{width:60px;padding:3px}
-.btn{height:44px;padding:0 20px;border-radius:14px;border:1px solid var(--line);background:var(--glass);color:#fff;font-weight:600;cursor:pointer;transition:.2s}.btn:hover{background:var(--c1)}
+.card{position:relative;height:96px;border-radius:18px;cursor:pointer;border:2px solid transparent;display:flex;align-items:flex-end;padding:12px;font-weight:700;transition:.25s}.card:hover{transform:translateY(-4px) scale(1.03)}.card.on{border-color:#fff}
+.ic{position:absolute;top:10px;left:10px;width:36px;height:36px;border-radius:13px;display:grid;place-items:center;font-size:18px;background:#ffffff33;backdrop-filter:blur(10px);border:1px solid #ffffff66;box-shadow:inset 0 1px 0 #ffffff80,0 6px 16px -6px #0006}
+.row{display:flex;gap:14px;align-items:center;margin:14px 0}.row label{opacity:.7;width:150px}input[type=color]{width:60px;height:44px;padding:3px;border-radius:12px;border:1px solid var(--line);background:#fff1}
+.btn{height:44px;padding:0 20px;border-radius:14px;border:1px solid var(--line);background:var(--glass);color:#fff;font-weight:600;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px}.btn:hover{background:var(--c1)}
 .soon{opacity:.6;padding:30px;text-align:center;border:1px dashed var(--line);border-radius:20px}
-/* fullscreen play screen */
-#fs{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.6s;background:#000}
-#fs.on{opacity:1;pointer-events:auto}#fsBg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75}
-#fsGrad{position:absolute;inset:-30%;background:conic-gradient(from 0deg,var(--c1),#000,var(--c2),#000,var(--c1));filter:blur(80px);opacity:.5;animation:spin 24s linear infinite}
-.menu{position:relative;width:340px;padding:22px;border-radius:34px;background:#0009;border:1px solid var(--line);backdrop-filter:blur(26px);box-shadow:0 30px 90px -20px var(--c1);transform:scale(.9);transition:.6s cubic-bezier(.2,.9,.3,1.2)}#fs.on .menu{transform:none}
-.menu header{display:flex;gap:12px;align-items:center;margin-bottom:18px}.menu header img{width:44px;border-radius:12px}.menu header b{display:block}.menu header small{opacity:.5}
-.mb{width:100%;height:50px;margin-bottom:10px;border-radius:15px;border:1px solid var(--line);background:var(--glass);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:.25s;text-align:left;padding:0 18px}.mb:hover{background:linear-gradient(90deg,var(--c1),var(--c2));transform:translateX(5px)}
-.sv{display:none;gap:8px;margin-bottom:10px}.sv.on{display:flex}.sv input{flex:1}
-.fst{margin-top:8px;font-size:12px;opacity:.8;min-height:34px}
+/* меню «Играть» */
+#fs{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .6s;background:#05030c}#fs.on{opacity:1;pointer-events:auto}
+#fsGrad{position:absolute;inset:-30%;background:conic-gradient(from 0deg,var(--c1),#05030c,var(--c2),#05030c,var(--c1));filter:blur(90px);opacity:.5;animation:spin 24s linear infinite}
+#fsBg,#fsImg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background-size:cover;background-position:center;opacity:0;transition:.8s}#fsBg.on,#fsImg.on{opacity:.85}
+.menu{position:relative;width:370px;padding:22px;border-radius:38px;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--c1) 85%,#fff);background:linear-gradient(145deg,#ffffff2e,#ffffff0f);backdrop-filter:blur(34px) saturate(1.8);box-shadow:inset 0 1px 0 #ffffff55,0 0 70px -6px var(--c1),0 0 140px -20px var(--c2),0 30px 80px -20px #000;opacity:0;transform:translateY(40px) scale(.9);transition:.8s cubic-bezier(.2,.9,.3,1.15)}
+#fs.on .menu{opacity:1;transform:none;animation:glow 4s ease-in-out .8s infinite}
+@keyframes glow{50%{box-shadow:inset 0 1px 0 #ffffff55,0 0 110px 0 var(--c1),0 0 190px -10px var(--c2),0 30px 80px -20px #000}}
+.maur{position:absolute;inset:-40%;background:radial-gradient(circle at 30% 30%,var(--c1),transparent 40%),radial-gradient(circle at 70% 60%,var(--c2),transparent 42%),radial-gradient(circle at 40% 88%,color-mix(in srgb,var(--c1) 50%,var(--c2)),transparent 40%);opacity:.42;filter:blur(28px);animation:spin 16s linear infinite}
+.mc{position:relative}.mh{display:flex;gap:12px;align-items:center;margin-bottom:6px}.mh img{width:46px;border-radius:14px;filter:drop-shadow(0 0 12px var(--c1))}.mh b{display:block;font-size:17px}.mh small{opacity:.6}
+.lab{font-size:11px;letter-spacing:2px;opacity:.6;margin:16px 4px 8px;font-weight:700}
+.view{display:none}.view.on{display:block}.view.on>*{animation:up .55s both}
+.mb{width:100%;display:flex;align-items:center;gap:13px;height:52px;margin-bottom:9px;padding:0 18px;border-radius:19px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;text-align:left;background:#ffffff14;border:1px solid #ffffff30;box-shadow:inset 0 1px 0 #ffffff30;transition:.25s}
+.mb:hover{background:linear-gradient(90deg,color-mix(in srgb,var(--c1) 70%,transparent),color-mix(in srgb,var(--c2) 55%,transparent));transform:translateX(5px);border-color:#fff8}
+.rr{display:flex;justify-content:center;gap:12px;margin:16px 0 14px}.rb{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;background:#ffffff14;border:1px solid #ffffff33;box-shadow:inset 0 1px 0 #ffffff40;transition:.25s}.rb:hover{transform:translateY(-4px) scale(1.1);background:var(--c1);box-shadow:0 8px 24px -6px var(--c1)}.rb.red{color:#ff6070;border-color:#ff607066}.rb.red:hover{background:#ff3b50;color:#fff}
+.mf{display:flex;gap:12px;align-items:center;padding-top:6px}.av{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--c1),var(--c2));display:grid;place-items:center;font-weight:900;font-size:18px}.mf small{display:block;opacity:.55;font-size:11px}
+.fst{margin-top:10px;font-size:12px;opacity:.85;min-height:30px}.menu .pb{margin-top:2px}
+.fi{width:100%;margin-bottom:9px;height:48px}.li{display:flex;align-items:center;gap:10px;padding:10px 14px;margin-bottom:7px;border-radius:15px;background:#ffffff12;border:1px solid #ffffff22;font-size:14px;cursor:pointer;transition:.2s}.li:hover{background:#ffffff22}.li.on{border-color:var(--c1);box-shadow:0 0 14px -4px var(--c1)}.li em{margin-left:auto;opacity:.5;font-style:normal;font-size:12px}.li u{text-decoration:none;opacity:.5;padding:0 4px}.li u:hover{opacity:1;color:#ff6070}
+.back{display:flex;gap:8px;align-items:center;cursor:pointer;opacity:.75;font-size:13px;margin:12px 2px}.back:hover{opacity:1}
 .ver{position:absolute;left:14px;bottom:10px;font-size:12px;opacity:.5}.ver.r{left:auto;right:14px}
 </style></head><body>
-<div id="bgGrad"></div><video id="bgMedia" autoplay loop muted playsinline></video><div id="shade"></div>
+<div id="bgGrad"></div><div id="bgImg"></div><video id="bgMedia" autoplay loop muted playsinline></video><div id="shade"></div>
 <div class="top"><div class="brand"><img src="./logo.svg">IWOHO LAUNCHER</div><div class="wc"><button onclick="api.win('min')">—</button><button onclick="api.win('max')">▢</button><button onclick="api.win('close')">✕</button></div></div>
-
 <div class="app">
  <div class="side">
-  <div class="nav on" data-p="home">🏠 Главная</div><div class="nav" data-p="cos">✨ Косметика</div><div class="nav" data-p="skins">👤 Скины</div><div class="nav" data-p="mods">🧩 Моды</div><div class="nav" data-p="packs">📦 Паки</div><div class="nav" data-p="set">⚙ Настройки</div>
-  <div class="hr"></div><div class="nav" id="quick">▶ Играть сразу</div><div class="nav" id="folder">📁 Папка модов</div>
+  <div class="nav on" data-p="home"><span data-ic="home"></span>Главная</div><div class="nav" data-p="cos"><span data-ic="flag"></span>Косметика</div><div class="nav" data-p="skins"><span data-ic="user"></span>Скины</div><div class="nav" data-p="mods"><span data-ic="books"></span>Моды</div><div class="nav" data-p="packs"><span data-ic="cube"></span>Паки</div><div class="nav" data-p="set"><span data-ic="gear"></span>Настройки</div>
+  <div class="hr"></div><div class="nav" id="quick"><span data-ic="play"></span>Играть сразу</div><div class="nav" id="folder"><span data-ic="folder"></span>Папка модов</div>
   <div style="flex:1"></div><div class="me"><img src="./logo.svg"><div><b id="meNick">Player</b><small>Iwoho Visuals</small></div></div>
  </div>
  <div class="main">
   <div class="page on" id="home"><div class="hello">С возвращением, <b id="hi">Player</b>!</div>
-   <div class="hero"><img class="big" src="./logo.svg"><h1>Iwoho Visuals</h1><p>Играй плавно. Играй красиво.</p>
-    <div class="pl"><button class="play" id="playBtn">▶ Играть<small id="pSub"></small></button>
+   <div class="hero"><h1>Iwoho Visuals</h1><p>Играй плавно. Играй красиво.</p>
+    <div class="pl"><button class="glass play" id="playBtn">▶ Играть<small id="pSub"></small></button>
      <select id="ver"><option>1.20.1</option><option>1.20.4</option><option>1.21.1</option><option>1.19.4</option><option>1.16.5</option><option>1.12.2</option><option>1.8.9</option></select>
      <select id="loader"><option>Fabric</option><option>Vanilla</option></select></div></div>
    <div class="status" id="st">Готов к запуску</div><div class="pb"><i id="pbH"></i></div>
-   <div class="stats"><div class="st"><span>Игрок</span><input id="nick" value="Player" maxlength="16"></div><div class="st"><span>Активный пак</span><b>Default</b></div><div class="st"><span>Модов установлено</span><b id="modCount">0</b></div><div class="st"><span>Память</span><select id="ram"><option>2G</option><option selected>4G</option><option>6G</option><option>8G</option></select></div></div>
+   <div class="stats"><div class="st"><span>Игрок</span><select id="acc"></select></div><div class="st"><span>Активный пак</span><b>Default</b></div><div class="st"><span>Модов установлено</span><b id="modCount">0</b></div><div class="st"><span>Память</span><select id="ram"><option>2G</option><option selected>4G</option><option>6G</option><option>8G</option></select></div></div>
    <div class="box"><h3>Моды сборки</h3><div id="modList"></div></div></div>
   <div class="page" id="cos"><h2>Косметика</h2><div class="soon">Плащи, крылья и эффекты — скоро</div></div>
   <div class="page" id="skins"><h2>Скины</h2><div class="soon">Выбор скина — скоро</div></div>
-  <div class="page" id="mods"><h2>Моды</h2><p style="opacity:.6">Положи .jar в папку модов, она откроется кнопкой ниже.</p><div class="row"><button class="btn" id="openMods">Открыть папку</button></div></div>
+  <div class="page" id="mods"><h2>Моды</h2><p style="opacity:.6">Положи .jar в папку модов.</p><div class="row"><button class="btn" id="openMods">Открыть папку</button></div></div>
   <div class="page" id="packs"><h2>Паки</h2><div class="soon">Ресурспаки и шейдеры — скоро</div></div>
   <div class="page" id="set"><h2>Настройки</h2>
-   <h4>Темы</h4><div class="grid" id="themes"></div>
+   <h4>Цвет лаунчера</h4><div class="grid" id="themes"></div>
    <div class="row"><label>Свой градиент</label><input type="color" id="c1"><input type="color" id="c2"><button class="btn" id="rand">🎲 Случайный</button></div>
-   <h4>Фон</h4><div class="grid" id="bgs"></div></div>
+   <h4>Фон лаунчера</h4><div class="row"><button class="btn" id="bgPick">🖼 Своё фото или видео</button><button class="btn" id="bgReset">Сбросить фон</button></div><div id="bgName" style="opacity:.55;font-size:13px"></div></div>
  </div>
 </div>
-<div id="fs"><div id="fsGrad"></div><video id="fsBg" autoplay loop muted playsinline></video>
- <div class="menu"><header><img src="./logo.svg"><div><b>Iwoho Visuals</b><small id="fsVer"></small></div></header>
-  <button class="mb" id="single">🎮 Одиночная игра</button>
-  <button class="mb" id="multi">🌐 Сетевая игра</button>
-  <div class="sv" id="sv"><input id="srv" placeholder="адрес сервера, напр. funtime.su"><button class="btn" id="go">▶</button></div>
-  <button class="mb" id="back">← Назад</button>
-  <div id="fst" class="fst"></div><div class="pb"><i id="pb"></i></div>
- </div>
+<div id="fs"><div id="fsGrad"></div><div id="fsImg"></div><video id="fsBg" autoplay loop muted playsinline></video>
+ <div class="menu"><div class="maur"></div><div class="mc">
+  <div class="mh"><img src="./logo.svg"><div><b>Iwoho Visuals</b><small id="fsVer"></small></div></div>
+  <div class="view on" id="v-main">
+   <div class="lab">PLAY</div><button class="mb" id="single"><span data-ic="cube"></span>Одиночная игра</button><button class="mb" id="multi"><span data-ic="wifi"></span>Сетевая игра</button>
+   <div class="lab">CLIENT</div><button class="mb" id="accounts"><span data-ic="user"></span>Accounts</button><button class="mb" id="friends"><span data-ic="heart"></span>Friends</button>
+   <div class="rr"><div class="rb" id="rSet" title="Настройки"><span data-ic="gear"></span></div><div class="rb" id="rLast" title="Последний сервер"><span data-ic="target"></span></div><div class="rb" id="rMods" title="Установить моды для серверов"><span data-ic="gem"></span></div><div class="rb" id="rFold" title="Папка модов"><span data-ic="shield"></span></div><div class="rb red" id="back" title="Закрыть"><span data-ic="x"></span></div></div>
+  </div>
+  <div class="view" id="v-multi"><div class="back" data-v="main"><span data-ic="back"></span>Назад</div><div class="lab">СЕТЕВАЯ ИГРА</div><input class="g fi" id="srv" placeholder="адрес сервера, например funtime.su"><button class="mb" id="go"><span data-ic="play"></span>Подключиться</button><div id="srvList"></div></div>
+  <div class="view" id="v-acc"><div class="back" data-v="main"><span data-ic="back"></span>Назад</div><div class="lab">ACCOUNTS</div><div id="accList"></div><input class="g fi" id="newNick" maxlength="16" placeholder="ник (офлайн-аккаунт)"><button class="mb" id="addAcc"><span data-ic="plus"></span>Добавить аккаунт</button><button class="mb" id="msAcc"><span data-ic="user"></span>Войти через Microsoft</button></div>
+  <div class="view" id="v-fr"><div class="back" data-v="main"><span data-ic="back"></span>Назад</div><div class="lab">FRIENDS</div><div id="frList"></div><input class="g fi" id="frName" maxlength="16" placeholder="ник друга"><input class="g fi" id="frSrv" placeholder="его сервер (необязательно)"><button class="mb" id="addFr"><span data-ic="plus"></span>Добавить друга</button></div>
+  <div class="mf"><div class="av" id="av">P</div><div><b id="mfName">Player</b><small id="mfType">User</small></div></div>
+  <div class="fst" id="fst"></div><div class="pb"><i id="pb"></i></div>
+ </div></div>
  <div class="ver">Iwoho Visuals 1.0</div><div class="ver r">Minecraft Java Edition</div>
 </div>
-
 <script>
-const $=s=>document.querySelector(s),root=document.documentElement;
-const THEMES=[['Фиолет','#8a63ff','#4fd8e8'],['Красный','#ff2d3d','#ff9a3d'],['Закат','#ff7b3d','#ffd24f'],['Океан','#2d7bff','#2dffd0'],['Сакура','#ff5fa8','#c46bff'],['Токсик','#6bff3d','#2dd4ff']];
-const BGS=[['Градиент',''],['Видео 1','./video1.mp4'],['Видео 2','./video2.mp4'],['Свой файл…','pick']];
-let S=JSON.parse(localStorage.getItem('iwoho')||'{}');S={c1:'#8a63ff',c2:'#4fd8e8',bg:'',...S};
-const save=()=>localStorage.setItem('iwoho',JSON.stringify(S));
-function paint(){root.style.setProperty('--c1',S.c1);root.style.setProperty('--c2',S.c2);$('#c1').value=S.c1;$('#c2').value=S.c2;}
-function media(){for(const v of [$('#bgMedia'),$('#fsBg')]){if(S.bg){v.src=S.bg;v.play();v.classList.add('on')}else{v.removeAttribute('src');v.classList.remove('on')}}}
-$('#themes').innerHTML=THEMES.map(([n,a,b],i)=>`<div class="card" data-i="${i}" style="background:linear-gradient(135deg,${a},${b})">${n}</div>`).join('');
-$('#bgs').innerHTML=BGS.map(([n,p],i)=>`<div class="card" data-b="${i}" style="background:#ffffff14">${n}</div>`).join('');
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],root=document.documentElement;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const P={home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',flag:'<path d="M5 21V4m0 0h11l-2 4 2 4H5"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',books:'<path d="M5 4v16M10 4v16M15 5l4 15"/>',cube:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',play:'<path d="M7 4l13 8-13 8z"/>',folder:'<path d="M3 6h6l2 2h10v11H3z"/>',wifi:'<path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r=".8"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>',gem:'<path d="M6 4h12l3 5-9 11L3 9zM3 9h18"/>',shield:'<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',back:'<path d="M15 5l-7 7 7 7"/>',plus:'<path d="M12 5v14M5 12h14"/>'};
+$$('[data-ic]').forEach(e=>e.innerHTML=`<svg viewBox="0 0 24 24">${P[e.dataset.ic]}</svg>`);
+const THEMES=[['Фиолет','#8a63ff','#4fd8e8','🔮'],['Красный','#ff2d3d','#ff9a3d','🔥'],['Закат','#ff7b3d','#ffd24f','🌇'],['Океан','#2d7bff','#2dffd0','🌊'],['Сакура','#ff5fa8','#c46bff','🌸'],['Токсик','#6bff3d','#2dd4ff','☣️']];
+let S={c1:'#8a63ff',c2:'#4fd8e8',bg:null,accounts:[{type:'offline',name:'Player'}],active:0,friends:[],servers:[],last:'',...JSON.parse(localStorage.getItem('iwoho')||'{}')};
+if(!S.bg||typeof S.bg!=='object')S.bg=null;if(!S.accounts||!S.accounts.length)S.accounts=[{type:'offline',name:'Player'}];if(!S.accounts[S.active])S.active=0;
+const save=()=>localStorage.setItem('iwoho',JSON.stringify(S)),cur=()=>S.accounts[S.active];
+function paint(){root.style.setProperty('--c1',S.c1);root.style.setProperty('--c2',S.c2);$('#c1').value=S.c1;$('#c2').value=S.c2}
+function media(){const b=S.bg;[$('#bgMedia'),$('#fsBg')].forEach(x=>{if(b&&b.type==='video'){x.src=b.src;x.play().catch(()=>{});x.classList.add('on')}else{x.removeAttribute('src');x.classList.remove('on')}});
+ [$('#bgImg'),$('#fsImg')].forEach(x=>{x.style.backgroundImage=b&&b.type==='image'?`url("${b.src}")`:'none';x.classList.toggle('on',!!(b&&b.type==='image'))});$('#bgName').textContent=b?'Фон: '+decodeURI(b.src.split('/').pop()):''}
+$('#themes').innerHTML=THEMES.map(([n,a,b,e],i)=>`<div class="card" data-i="${i}" style="background:linear-gradient(135deg,${a},${b})"><div class="ic">${e}</div>${n}</div>`).join('');
 $('#themes').onclick=e=>{const c=e.target.closest('.card');if(!c)return;const t=THEMES[c.dataset.i];S.c1=t[1];S.c2=t[2];paint();save()};
-$('#bgs').onclick=async e=>{const c=e.target.closest('.card');if(!c)return;let p=BGS[c.dataset.b][1];if(p==='pick'){const f=await api.pickFile();if(!f)return;p='file:///'+f.replace(/\\/g,'/')}S.bg=p;media();save()};
 $('#c1').oninput=e=>{S.c1=e.target.value;paint();save()};$('#c2').oninput=e=>{S.c2=e.target.value;paint();save()};
 $('#rand').onclick=()=>{const r=()=>'#'+Math.floor(Math.random()*0xffffff).toString(16).padStart(6,'0');S.c1=r();S.c2=r();paint();save()};
-document.querySelectorAll('.nav[data-p]').forEach(n=>n.onclick=()=>{document.querySelectorAll('.nav[data-p],.page').forEach(x=>x.classList.remove('on'));n.classList.add('on');$('#'+n.dataset.p).classList.add('on')});
-// play flow
-$('#openMods').onclick=()=>api.openMods();
+$('#bgPick').onclick=async()=>{const f=await api.pickFile();if(!f)return;const src=encodeURI('file:///'+f.replace(/\\/g,'/'));S.bg={type:/\.(mp4|webm)$/i.test(f)?'video':'image',src};media();save()};
+$('#bgReset').onclick=()=>{S.bg=null;media();save()};
+$$('.nav[data-p]').forEach(n=>n.onclick=()=>{$$('.nav[data-p],.page').forEach(x=>x.classList.remove('on'));n.classList.add('on');$('#'+n.dataset.p).classList.add('on');if(n.dataset.p==='home')mods()});
+// аккаунты
+function who(){const a=cur();$('#hi').textContent=$('#meNick').textContent=$('#mfName').textContent=a.name;$('#av').textContent=a.name[0].toUpperCase();$('#mfType').textContent=a.type==='ms'?'Microsoft':'Offline'}
+function rAcc(){$('#acc').innerHTML=S.accounts.map((a,i)=>`<option value="${i}">${esc(a.name)}${a.type==='ms'?' (MS)':''}</option>`).join('');$('#acc').value=S.active;
+ $('#accList').innerHTML=S.accounts.map((a,i)=>`<div class="li ${i==S.active?'on':''}" data-i="${i}">${esc(a.name)}<em>${a.type==='ms'?'Microsoft':'офлайн'}</em>${S.accounts.length>1?'<u data-d="'+i+'">✕</u>':''}</div>`).join('');who();save()}
+$('#acc').onchange=e=>{S.active=+e.target.value;rAcc()};
+$('#accList').onclick=e=>{const d=e.target.closest('[data-d]');if(d){S.accounts.splice(+d.dataset.d,1);S.active=0;rAcc();return}const l=e.target.closest('.li');if(l){S.active=+l.dataset.i;rAcc()}};
+$('#addAcc').onclick=()=>{const n=$('#newNick').value.trim();if(!n)return;S.accounts.push({type:'offline',name:n});S.active=S.accounts.length-1;$('#newNick').value='';rAcc()};
+$('#msAcc').onclick=async()=>{setFst('Открываю вход Microsoft…',0);const r=await api.msLogin();if(r.ok){S.accounts.push({type:'ms',name:r.name});S.active=S.accounts.length-1;rAcc();setFst('Вход выполнен: '+r.name,0)}else setFst('Ошибка входа: '+r.error,0)};
+// друзья и серверы
+function rFr(){$('#frList').innerHTML=S.friends.map((f,i)=>`<div class="li" data-i="${i}">${esc(f.name)}<em>${esc(f.server||'')}</em><u data-d="${i}">✕</u></div>`).join('')||'<div style="opacity:.5;font-size:13px;margin-bottom:10px">Друзей пока нет</div>';save()}
+$('#frList').onclick=e=>{const d=e.target.closest('[data-d]');if(d){S.friends.splice(+d.dataset.d,1);rFr();return}const l=e.target.closest('.li');if(l&&S.friends[l.dataset.i].server)run(S.friends[l.dataset.i].server)};
+$('#addFr').onclick=()=>{const n=$('#frName').value.trim();if(!n)return;S.friends.push({name:n,server:$('#frSrv').value.trim()});$('#frName').value=$('#frSrv').value='';rFr()};
+function rSrv(){$('#srvList').innerHTML=S.servers.map((s,i)=>`<div class="li" data-i="${i}">${esc(s)}<u data-d="${i}">✕</u></div>`).join('');save()}
+$('#srvList').onclick=e=>{const d=e.target.closest('[data-d]');if(d){S.servers.splice(+d.dataset.d,1);rSrv();return}const l=e.target.closest('.li');if(l)run(S.servers[l.dataset.i])};
+$('#go').onclick=()=>{const a=$('#srv').value.trim();if(!a)return;if(!S.servers.includes(a))S.servers.push(a);S.last=a;rSrv();run(a)};
+// меню
+function view(v){$$('.view').forEach(x=>x.classList.remove('on'));const el=$('#v-'+v);el.classList.add('on');[...el.children].forEach((c,i)=>c.style.animationDelay=i*50+'ms')}
+$$('.back').forEach(b=>b.onclick=()=>view('main'));$('#multi').onclick=()=>view('multi');$('#accounts').onclick=()=>view('acc');$('#friends').onclick=()=>view('fr');
 const sub=()=>{$('#pSub').textContent=`${$('#loader').value} ${$('#ver').value}`;$('#fsVer').textContent=`${$('#ver').value} · ${$('#loader').value}`};$('#ver').onchange=$('#loader').onchange=sub;sub();
-const openFs=()=>{sub();api.fullscreen(true);$('#fs').classList.add('on')};$('#playBtn').onclick=openFs;$('#quick').onclick=openFs;$('#folder').onclick=()=>api.openMods();
-$('#back').onclick=()=>{$('#fs').classList.remove('on');api.fullscreen(false)};
-$('#multi').onclick=()=>$('#sv').classList.toggle('on');
-async function run(server){
-  setSt('Подготовка…',0);
-  const r=await api.launch({nick:$('#nick').value,version:$('#ver').value,loader:$('#loader').value,ram:$('#ram').value,server});
-  if(!r.ok)setSt('Ошибка: '+r.error,0);
-}
-$('#single').onclick=()=>run();$('#go').onclick=()=>run($('#srv').value.trim());
-api.on('progress',d=>setSt(d.text,d.pct));
-api.on('started',()=>setSt('Игра запущена ✔',100));
-api.on('closed',()=>setSt('Игра закрыта',0));
-const sv=localStorage.getItem('iwohoNick');if(sv)$('#nick').value=sv;$('#nick').onchange=e=>localStorage.setItem('iwohoNick',e.target.value);
-function setSt(t,p){$('#st').textContent=t;$('#fst').textContent=t;$('#pbH').style.width=p+'%';$('#pb').style.width=p+'%'}
-function hi(){$('#hi').textContent=$('#meNick').textContent=$('#nick').value||'Player'}$('#nick').addEventListener('input',hi);hi();
-async function mods(){const l=await api.listMods();$('#modCount').textContent=l.length;$('#modList').innerHTML=l.length?l.map(m=>`<div class="mod"><i></i>${m.name}<em>${m.size} МБ</em></div>`).join(''):'<div style="opacity:.5;font-size:13px">Модов пока нет — добавь .jar через «Папка модов»</div>'}
-mods();document.querySelectorAll('.nav').forEach(n=>n.addEventListener('click',()=>{if(n.dataset.p==='home')mods()}));
-paint();media();
+const openFs=()=>{sub();view('main');api.fullscreen(true);$('#fs').classList.add('on')},closeFs=()=>{$('#fs').classList.remove('on');api.fullscreen(false)};
+$('#playBtn').onclick=openFs;$('#quick').onclick=openFs;$('#back').onclick=closeFs;$('#folder').onclick=$('#rFold').onclick=$('#openMods').onclick=()=>api.openMods();
+$('#rSet').onclick=()=>{closeFs();$('.nav[data-p=set]').click()};$('#rLast').onclick=()=>S.last?run(S.last):view('multi');
+$('#rMods').onclick=async()=>{setFst('Устанавливаю Fabric API + ViaFabricPlus…',10);const r=await api.installMods({version:$('#ver').value});setFst(r.ok?r.res.join(' · '):'Ошибка: '+r.error,r.ok?100:0);mods()};
+function setFst(t,p){$('#st').textContent=t;$('#fst').textContent=t;$('#pbH').style.width=p+'%';$('#pb').style.width=p+'%'}
+async function run(server){setFst('Подготовка…',2);const a=cur();const r=await api.launch({account:a,version:$('#ver').value,loader:$('#loader').value,ram:$('#ram').value,server});if(!r.ok)setFst('Ошибка: '+r.error,0)}
+$('#single').onclick=()=>run();
+api.on('progress',d=>setFst(d.text,d.pct));api.on('started',()=>setFst('Игра запущена ✔',100));api.on('closed',()=>setFst('Игра закрыта',0));
+async function mods(){const l=await api.listMods();$('#modCount').textContent=l.length;$('#modList').innerHTML=l.length?l.map(m=>`<div class="mod"><i></i>${esc(m.name)}<em>${m.size} МБ</em></div>`).join(''):'<div style="opacity:.5;font-size:13px">Модов пока нет — добавь .jar через «Папка модов»</div>'}
+paint();media();rAcc();rFr();rSrv();mods();
 </script></body></html>

@@ -6,11 +6,12 @@
   "main": "main.js",
   "scripts": { "start": "electron .", "build": "electron-builder" },
   "dependencies": { "minecraft-launcher-core": "^3.18.2" },
+  "optionalDependencies": { "msmc": "^5.0.0" },
   "devDependencies": { "electron": "^31.0.0", "electron-builder": "^24.13.3" },
   "build": {
     "appId": "com.iwoho.launcher",
     "productName": "Iwoho Launcher",
-    "files": ["main.js", "preload.js", "index.html", "splash.html", "logo.svg", "video1.mp4", "video2.mp4", "package.json"],
+    "files": ["main.js", "preload.js", "index.html", "splash.html", "logo.svg", "hero.svg", "package.json"],
     "win": { "target": "nsis" },
     "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true }
   }
