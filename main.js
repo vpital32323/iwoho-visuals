@@ -1,7 +1,9 @@
+require('graceful-fs').gracefulify(require('fs'));
 const { app, BrowserWindow, ipcMain, dialog, shell } = require('electron');
 const path = require('path'); const fs = require('fs'); const { execFile } = require('child_process');
 const root = path.join(app.getPath('appData'), '.iwoho');
 let splash, win; const msAuth = {};
+process.on('uncaughtException', (e) => { try { win && win.webContents.send('progress', { text: 'Ошибка: ' + e.message, pct: 0 }); } catch {} });
 
 function createSplash() {
   splash = new BrowserWindow({ width: 420, height: 420, frame: false, transparent: true, resizable: false, alwaysOnTop: true, center: true });
@@ -72,7 +74,7 @@ ipcMain.handle('launch', async (e, o) => {
     if (a.type === 'ms') { auth = msAuth[a.name]; if (!auth) throw new Error('Войди в Microsoft-аккаунт заново (Accounts)'); }
     else auth = Authenticator.getAuth(a.name || o.nick || 'Player');
     const javaPath = await ensureJava(javaMajor(o.version), send);
-    const opts = { authorization: auth, root, javaPath, version: { number: o.version, type: 'release' }, memory: { max: o.ram || '4G', min: '1G' } };
+    const opts = { authorization: auth, root, javaPath, version: { number: o.version, type: 'release' }, memory: { max: o.ram || '4G', min: '1G' }, overrides: { maxSockets: 2 } };
     if (o.server) {
       const [host, port] = o.server.split(':'); const mi = Number(o.version.split('.')[1]);
       if (mi >= 20) opts.quickPlay = { type: 'multiplayer', identifier: o.server }; else opts.server = { host, port: port || '25565' };
